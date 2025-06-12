@@ -27,6 +27,7 @@
 # - Provide additional context or motivation if necessary
 # - Usually write plain text; avoid using bullets in the body
 # - Leave a blank line between body and footer (if footer present)
+# - Use proper sentences and end with periods
 #
 # Footer (optional):
 # - Use for referencing issues, breaking changes, or co-authors
@@ -34,6 +35,7 @@
 #     Closes: #123
 #     Fixes: ABC-456
 #     Co-authored-by: Name <email@example.com>
+# - Do NOT end footer lines with a period
 #
 # ------------------------------------------------------------------
 # Example commit message using this template:
