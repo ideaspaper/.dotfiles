@@ -45,4 +45,7 @@
 #
 # Closes: #42
 # Co-authored-by: Jane Doe <jane@example.com>
+#
+# ------------------------------------------------------------------
+# Inspired by Chris Beams' guide on writing great Git commit messages
 # ------------------------------------------------------------------
