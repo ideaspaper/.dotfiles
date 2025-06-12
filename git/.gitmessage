@@ -1,0 +1,48 @@
+# ------------------------------------------------------------------
+# Choose ONE subject line below, uncomment it, and edit as needed:
+# ------------------------------------------------------------------
+# feat: Add new user registration flow
+# fix: Correct critical bug in login redirection
+# chore: Update project dependencies to latest versions
+# docs: Improve API endpoint documentation
+# style: Refactor CSS for consistent button styling
+# refactor: Consolidate redundant data fetching logic
+# test: Add unit tests for authentication service
+# build: Configure CI/CD pipeline for deployment
+# ci: Update GitHub Actions workflow for pull requests
+# perf: Optimize database queries for user data retrieval
+# revert: Revert "feat: Implement experimental feature X"
+
+# ------------------------------------------------------------------
+# Commit message format guidelines:
+# ------------------------------------------------------------------
+# Subject line (first line):
+# - Use imperative mood (e.g., "Add", "Fix", "Update")
+# - Capitalized and no period at the end
+# - Max 50 characters including prefix (feat:, fix:, etc.)
+# - Leave a blank line after the subject line
+#
+# Body (optional, wrap at 72 chars):
+# - Explain what was changed and why, not how
+# - Provide additional context or motivation if necessary
+# - Usually write plain text; avoid using bullets in the body
+# - Leave a blank line between body and footer (if footer present)
+#
+# Footer (optional):
+# - Use for referencing issues, breaking changes, or co-authors
+# - No bullets needed here, just plain lines like:
+#     Closes: #123
+#     Fixes: ABC-456
+#     Co-authored-by: Name <email@example.com>
+#
+# ------------------------------------------------------------------
+# Example commit message using this template:
+#
+# refactor: Consolidate redundant data fetching logic
+#
+# Combined duplicate API calls in user and product services to reduce
+# network overhead and improve performance by 20%.
+#
+# Closes: #42
+# Co-authored-by: Jane Doe <jane@example.com>
+# ------------------------------------------------------------------

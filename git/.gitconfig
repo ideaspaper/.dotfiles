@@ -1,0 +1,7 @@
+[user]
+	name = anpan
+	email = agni.infinity@gmail.com
+[core]
+	editor = nvim
+[commit]
+	template = /Users/anpan/.gitmessage
