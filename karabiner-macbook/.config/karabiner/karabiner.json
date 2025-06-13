@@ -1,0 +1,48 @@
+{
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Map Left Option to Fn key",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "left_option" },
+                                "to": [{ "key_code": "fn" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Map Left Control to Left Option",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "fn" },
+                                "to": [{ "key_code": "left_control" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": { "key_code": "left_control" },
+                                "to": [{ "key_code": "left_option" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Map Fn key to Left Control",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "fn" },
+                                "to": [{ "key_code": "left_control" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "name": "Default profile",
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+        }
+    ]
+}
