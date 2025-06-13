@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------
-# Choose ONE subject line below, uncomment it, and edit as needed:
+# Subject types:
 # ------------------------------------------------------------------
 # feat: Add new user registration flow
 # fix: Correct critical bug in login redirection
@@ -12,7 +12,7 @@
 # ci: Update GitHub Actions workflow for pull requests
 # perf: Optimize database queries for user data retrieval
 # revert: Revert "feat: Implement experimental feature X"
-
+#
 # ------------------------------------------------------------------
 # Commit message format guidelines:
 # ------------------------------------------------------------------
