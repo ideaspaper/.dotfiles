@@ -1,6 +1,7 @@
 brew "atuin"
 brew "clipboard"
 brew "golang-migrate"
+brew "htop"
 brew "jq"
 brew "luarocks"
 brew "neovim"
