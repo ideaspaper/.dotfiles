@@ -103,6 +103,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Disable history file saving
+unset HISTFILE
+SAVEHIST=0
+HISTSIZE=0
+
 # Check if .aliases exists and source it
 if [ -f "$HOME/.aliases" ]; then
     source "$HOME/.aliases"
