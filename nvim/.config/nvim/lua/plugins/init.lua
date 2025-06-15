@@ -67,6 +67,8 @@ return {
 		config = function()
 			require("render-markdown").setup({
 				enabled = false,
+				latex = { enabled = false },
+				html = { enabled = false },
 			})
 			vim.api.nvim_create_user_command("ToggleBufferRenderMarkdown", function()
 				require("render-markdown").buf_toggle()
