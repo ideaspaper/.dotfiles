@@ -5,6 +5,14 @@ return {
 		config = function()
 			require("configs.treesitter")
 		end,
+		dependencies = {
+			{
+				"nvim-treesitter/nvim-treesitter-textobjects",
+				config = function()
+					require("configs.treesitter-textobjects")
+				end,
+			},
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -27,14 +35,6 @@ return {
 		event = "VeryLazy",
 		config = function()
 			require("nvim-surround").setup({})
-		end,
-	},
-	{
-		"nvim-treesitter/nvim-treesitter-textobjects",
-		event = "VeryLazy",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		config = function()
-			require("configs.treesitter-textobjects")
 		end,
 	},
 	{
