@@ -38,14 +38,6 @@ return {
 		end,
 	},
 	{
-		"folke/todo-comments.nvim",
-		event = "VeryLazy",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("todo-comments").setup({})
-		end,
-	},
-	{
 		"windwp/nvim-ts-autotag",
 		event = "VeryLazy",
 		dependencies = { "nvim-treesitter" },
@@ -56,7 +48,7 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		event = "VeryLazy",
-		dependencies = { "nvim-telescope/telescope.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
 		config = function()
 			require("todo-comments").setup({})
 			vim.api.nvim_create_user_command("OpenTelescopeTodoComments", function()
