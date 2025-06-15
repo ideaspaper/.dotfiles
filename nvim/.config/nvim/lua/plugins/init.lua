@@ -151,4 +151,8 @@ return {
 			})
 		end,
 	},
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+	},
 }
