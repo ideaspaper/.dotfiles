@@ -118,5 +118,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 export PATH=$PATH:$(go env GOPATH)/bin
+export PATH=$HOME/bin/nvim/bin:$PATH
 eval "$(pyenv init - zsh)"
 eval "$(atuin init zsh)"
