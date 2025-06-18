@@ -1,4 +1,4 @@
-local lspconfig = package.loaded["lspconfig"]
+local lspconfig = require("lspconfig")
 
 local ignore_install = {}
 

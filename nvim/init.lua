@@ -15,13 +15,6 @@ local lazy_config = require("configs.lazy")
 
 -- load plugins
 require("lazy").setup({
-	{
-		"ideaspaper/NvChad",
-		lazy = false,
-		branch = "v2.5m",
-		import = "nvchad.plugins",
-	},
-
 	{ import = "plugins" },
 }, lazy_config)
 
