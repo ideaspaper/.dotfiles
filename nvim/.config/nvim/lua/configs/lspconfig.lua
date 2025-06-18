@@ -1,7 +1,6 @@
 local M = {}
 local map = vim.keymap.set
 
--- export on_attach & capabilities
 M.on_attach = function(_, bufnr)
 	local function opts(desc)
 		return { buffer = bufnr, desc = "lsp " .. desc }
@@ -20,7 +19,6 @@ M.on_attach = function(_, bufnr)
 	map("n", "<leader>ra", require("nvchad.lsp.renamer"), opts("nvrenamer"))
 end
 
--- disable semanticTokens
 M.on_init = function(client, _)
 	if client.supports_method("textDocument/semanticTokens") then
 		client.server_capabilities.semanticTokensProvider = nil
