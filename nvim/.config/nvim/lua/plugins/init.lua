@@ -1,7 +1,6 @@
 return {
 	-- Base utilities used by many plugins
 	"nvim-lua/plenary.nvim",
-
 	-- Base themes and UI core
 	{
 		"nvchad/base46",
@@ -9,7 +8,7 @@ return {
 			require("base46").load_all_highlights()
 		end,
 	},
-
+	-- NVChad's core UI module for layout and appearance
 	{
 		"nvchad/ui",
 		lazy = false,
@@ -17,25 +16,27 @@ return {
 			require("nvchad")
 		end,
 	},
-
+	-- Volt theme (custom UI theme extension)
 	"nvzone/volt",
-
+	-- Adds file-type icons to Neovim (used by statuslines, nvim-tree, etc.)
 	{
 		"nvim-tree/nvim-web-devicons",
+		lazy = false,
 		opts = function()
 			dofile(vim.g.base46_cache .. "devicons")
 			return { override = require("nvchad.icons.devicons") }
 		end,
 	},
-
-	-- Indent guides
+	-- Visual indentation guides and scope lines
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "User FilePost",
-		opts = {
-			indent = { char = "│", highlight = "IblChar" },
-			scope = { char = "│", highlight = "IblScopeChar" },
-		},
+		opts = function()
+			return {
+				indent = { char = "│", highlight = "IblChar" },
+				scope = { char = "│", highlight = "IblScopeChar" },
+			}
+		end,
 		config = function(_, opts)
 			dofile(vim.g.base46_cache .. "blankline")
 
@@ -46,8 +47,7 @@ return {
 			dofile(vim.g.base46_cache .. "blankline")
 		end,
 	},
-
-	-- File explorer
+	-- File explorer sidebar
 	{
 		"nvim-tree/nvim-tree.lua",
 		cmd = { "NvimTreeToggle", "NvimTreeFocus" },
@@ -55,8 +55,7 @@ return {
 			return require("configs.nvimtree")
 		end,
 	},
-
-	-- Which-key for keybinding hints
+	-- Shows a popup with keybinding hints as you type
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -67,8 +66,18 @@ return {
 			return {}
 		end,
 	},
-
-	-- Git signs
+	-- Auto-formatting plugin using external formatters (e.g., stylua for Lua)
+	{
+		"stevearc/conform.nvim",
+		opts = function()
+			return {
+				formatters_by_ft = {
+					lua = { "stylua" },
+				},
+			}
+		end,
+	},
+	-- Git integration: shows added/changed/removed lines in the gutter
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "User FilePost",
@@ -130,8 +139,7 @@ return {
 			})
 		end,
 	},
-
-	-- Mason and LSP stuff
+	-- Manages LSP servers and tools via Mason UI
 	{
 		"mason-org/mason.nvim",
 		cmd = { "Mason", "MasonInstall", "MasonUpdate" },
@@ -139,7 +147,7 @@ return {
 			return require("configs.mason")
 		end,
 	},
-
+	-- Configures LSP client support for Neovim
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile", "User FilePost" },
@@ -148,7 +156,7 @@ return {
 			require("configs.lspconfig")
 		end,
 	},
-
+	-- Integrates Mason with lspconfig
 	{
 		"mason-org/mason-lspconfig.nvim",
 		event = "VeryLazy",
@@ -156,45 +164,47 @@ return {
 			require("configs.mason-lspconfig")
 		end,
 	},
-
-	-- LuaSnip: Snippet Engine
+	-- Snippet engine for completion
 	{
 		"L3MON4D3/LuaSnip",
-		event = "InsertEnter",
-		opts = {
-			history = true,
-			updateevents = "TextChanged,TextChangedI",
+		event = { "BufReadPre", "InsertEnter" },
+		dependencies = {
+			{
+				"rafamadriz/friendly-snippets",
+				config = function()
+					require("luasnip.loaders.from_vscode").lazy_load()
+				end,
+			},
 		},
+		opts = function()
+			return {
+				history = true,
+				updateevents = "TextChanged,TextChangedI",
+			}
+		end,
 		config = function(_, opts)
 			local luasnip = require("luasnip")
 			luasnip.config.set_config(opts)
 			require("configs.luasnip")
 		end,
 	},
-
-	-- Friendly-snippets: Large snippet collection (loaded separately)
-	{
-		"rafamadriz/friendly-snippets",
-		event = "InsertEnter",
-		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load()
-		end,
-	},
-
+	-- Automatically insert matching parentheses, brackets, quotes, etc.
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		opts = {
-			fast_wrap = {},
-			disable_filetype = { "TelescopePrompt", "vim" },
-		},
+		opts = function()
+			return {
+				fast_wrap = {},
+				disable_filetype = { "TelescopePrompt", "vim" },
+			}
+		end,
 		config = function(_, opts)
 			require("nvim-autopairs").setup(opts)
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	},
-
+	-- Main completion engine
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -202,29 +212,32 @@ return {
 			return require("configs.cmp")
 		end,
 	},
-
+	-- nvim-cmp source: LuaSnip
 	{
 		"saadparwaiz1/cmp_luasnip",
 		event = "InsertEnter",
 	},
+	-- nvim-cmp source: Neovim Lua API
 	{
 		"hrsh7th/cmp-nvim-lua",
 		event = "InsertEnter",
 	},
+	-- nvim-cmp source: LSP
 	{
 		"hrsh7th/cmp-nvim-lsp",
 		event = "InsertEnter",
 	},
+	-- nvim-cmp source: current buffer words
 	{
 		"hrsh7th/cmp-buffer",
 		event = "InsertEnter",
 	},
+	-- nvim-cmp source: file paths
 	{
 		"hrsh7th/cmp-path",
 		event = "InsertEnter",
 	},
-
-	-- Treesitter and related
+	-- Treesitter for syntax highlighting and parsing
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPre", "BufNewFile", "BufReadPost" },
@@ -234,14 +247,15 @@ return {
 			require("configs.treesitter")
 		end,
 	},
-
+	-- Extra text objects (functions, loops, blocks) for Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		event = "VeryLazy",
 		config = function()
 			require("configs.treesitter-textobjects")
 		end,
 	},
-
+	-- Auto-close and auto-rename HTML/JSX tags
 	{
 		"windwp/nvim-ts-autotag",
 		event = "VeryLazy",
@@ -249,8 +263,7 @@ return {
 			require("nvim-ts-autotag").setup({})
 		end,
 	},
-
-	-- Telescope
+	-- Powerful fuzzy finder
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
@@ -258,8 +271,7 @@ return {
 			return require("configs.telescope")
 		end,
 	},
-
-	-- Todo comments
+	-- Highlight and manage TODO, FIX, HACK comments
 	{
 		"folke/todo-comments.nvim",
 		event = "VeryLazy",
@@ -274,8 +286,7 @@ return {
 			vim.keymap.set("n", "<leader>ft", ":TodoTelescope<CR>", { desc = "todo comments telescope" })
 		end,
 	},
-
-	-- Markdown renderer
+	-- Lightweight Markdown preview rendered in Neovim buffer
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		event = "VeryLazy",
@@ -299,8 +310,7 @@ return {
 			)
 		end,
 	},
-
-	-- Surround plugin
+	-- Add/change/delete surrounding characters like parentheses, quotes, etc.
 	{
 		"kylechui/nvim-surround",
 		event = "VeryLazy",
@@ -308,8 +318,7 @@ return {
 			require("nvim-surround").setup({})
 		end,
 	},
-
-	-- LazyGit
+	-- Integrates LazyGit terminal UI into Neovim
 	{
 		"kdheepak/lazygit.nvim",
 		lazy = true,
