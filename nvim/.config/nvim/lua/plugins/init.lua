@@ -157,19 +157,33 @@ return {
 		end,
 	},
 
-	-- Completion plugins and snippet engine
+	-- LuaSnip: Snippet Engine
 	{
 		"L3MON4D3/LuaSnip",
-		dependencies = "rafamadriz/friendly-snippets",
-		opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+		event = "InsertEnter",
+		opts = {
+			history = true,
+			updateevents = "TextChanged,TextChangedI",
+		},
 		config = function(_, opts)
-			require("luasnip").config.set_config(opts)
+			local luasnip = require("luasnip")
+			luasnip.config.set_config(opts)
 			require("configs.luasnip")
+		end,
+	},
+
+	-- Friendly-snippets: Large snippet collection (loaded separately)
+	{
+		"rafamadriz/friendly-snippets",
+		event = "InsertEnter",
+		config = function()
+			require("luasnip.loaders.from_vscode").lazy_load()
 		end,
 	},
 
 	{
 		"windwp/nvim-autopairs",
+		event = "InsertEnter",
 		opts = {
 			fast_wrap = {},
 			disable_filetype = { "TelescopePrompt", "vim" },
@@ -189,11 +203,26 @@ return {
 		end,
 	},
 
-	{ "saadparwaiz1/cmp_luasnip" },
-	{ "hrsh7th/cmp-nvim-lua" },
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/cmp-buffer" },
-	{ "hrsh7th/cmp-path" },
+	{
+		"saadparwaiz1/cmp_luasnip",
+		event = "InsertEnter",
+	},
+	{
+		"hrsh7th/cmp-nvim-lua",
+		event = "InsertEnter",
+	},
+	{
+		"hrsh7th/cmp-nvim-lsp",
+		event = "InsertEnter",
+	},
+	{
+		"hrsh7th/cmp-buffer",
+		event = "InsertEnter",
+	},
+	{
+		"hrsh7th/cmp-path",
+		event = "InsertEnter",
+	},
 
 	-- Treesitter and related
 	{
