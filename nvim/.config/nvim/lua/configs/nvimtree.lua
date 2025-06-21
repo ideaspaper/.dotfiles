@@ -18,6 +18,7 @@ return {
 		highlight_git = true,
 		indent_markers = { enable = true },
 		icons = {
+			show = { folder_arrow = false },
 			glyphs = {
 				default = "󰈚",
 				folder = {
