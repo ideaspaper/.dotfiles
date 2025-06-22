@@ -116,6 +116,7 @@ return {
         dependencies = {
             "rafamadriz/friendly-snippets",
         },
+        build = "make install_jsregexp",
         config = function()
             require("configs.luasnip").setup()
         end,
