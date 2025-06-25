@@ -17,13 +17,6 @@ unset HISTFILE
 SAVEHIST=0
 HISTSIZE=0
 
-# To enable history, replace above with:
-# HISTFILE=~/.zsh_history
-# HISTSIZE=10000
-# SAVEHIST=10000
-# setopt append_history
-# setopt share_history
-
 ### Aliases ###
 # Source user-defined aliases if available
 if [ -f "$HOME/.aliases" ]; then
