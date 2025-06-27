@@ -56,3 +56,35 @@ groot() {
   cd "$(git rev-parse --show-toplevel)" || return 1
   printf "Moved to Git root: %s\n" "$PWD"
 }
+
+gclean() {
+  _validate_git_installed || return 1
+  _validate_git_repo || return 1
+
+  git clean -fd
+  printf "Untracked files and directories removed.\n"
+}
+
+gcleanall() {
+  _validate_git_installed || return 1
+  _validate_git_repo || return 1
+
+  git clean -fdx
+  printf "Removed all untracked files including ignored.\n"
+}
+
+gundo() {
+  _validate_git_installed || return 1
+  _validate_git_repo || return 1
+
+  git reset --soft HEAD~1
+  printf "Last commit undone, changes kept staged.\n"
+}
+
+gprune() {
+  _validate_git_installed || return 1
+  _validate_git_repo || return 1
+
+  git fetch --prune
+  printf "Pruned remote-tracking branches.\n"
+}
