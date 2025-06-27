@@ -24,5 +24,6 @@ alias ping='ping -c 5'
 alias reload='source ~/.zshrc'
 
 alias pn='pnpm'
+alias v='nvim'
 alias vim='nvim'
 alias lgit='lazygit'
