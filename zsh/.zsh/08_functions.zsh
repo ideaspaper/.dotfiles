@@ -1,20 +1,20 @@
 _validate_git_installed() {
   command -v git >/dev/null 2>&1 || {
-    echo "Git is not installed. Please install Git to use this command."
+    printf "Git is not installed. Please install Git to use this command.\n" >&2
     return 1
   }
 }
 
 _validate_git_repo() {
   if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    echo "Not inside a Git repository." >&2
+    printf "Not inside a Git repository.\n" >&2
     return 1
   fi
 }
 
 mkcd() {
   if [ -z "$1" ]; then
-    echo "Usage: mkcd <directory>"
+    printf "Usage: mkcd <directory>\n" >&2
     return 1
   fi
 
@@ -23,14 +23,14 @@ mkcd() {
 
 mkproj() {
   if [ -z "$1" ]; then
-    echo "Usage: mkproj <project-name>"
+    printf "Usage: mkproj <project-name>\n" >&2
     return 1
   fi
 
   _validate_git_installed || return 1
 
   if [ -d "$1" ]; then
-    echo "Folder '$1' already exists. Aborting."
+    printf "Folder '%s' already exists. Aborting.\n" "$1" >&2
     return 1
   fi
 
@@ -39,18 +39,20 @@ mkproj() {
   local folder_name
   folder_name=$(basename "$PWD")
 
-  echo "# $folder_name" > README.md
+  printf "# %s\n" "$folder_name" > README.md
+  printf "### OSX ###\n.DS_Store\n.AppleDouble\n.LSOverride\n" > .gitignore
+
   git init -q
-  git add README.md
+  git add README.md .gitignore
   git commit -m "feat: Initial commit" >/dev/null 2>&1
 
-  echo "Project '$folder_name' created and Git repository initialized."
+  printf "Project '%s' created and Git repository initialized.\n" "$folder_name"
 }
 
-gitroot() {
+groot() {
   _validate_git_installed || return 1
   _validate_git_repo || return 1
 
   cd "$(git rev-parse --show-toplevel)" || return 1
-  echo "Moved to Git root: $PWD"
+  printf "Moved to Git root: %s\n" "$PWD"
 }
