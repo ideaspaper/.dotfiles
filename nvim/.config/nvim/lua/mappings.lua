@@ -32,6 +32,22 @@ map("n", "<leader>x", function()
     require("nvchad.tabufline").close_buffer()
 end, { desc = "buffer close" })
 
+map("n", "<leader>X", function()
+    local current = vim.api.nvim_get_current_buf()
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if buf ~= current and vim.api.nvim_buf_is_loaded(buf) then
+            local buf_ft = vim.api.nvim_buf_get_option(buf, "filetype")
+            local buf_name = vim.api.nvim_buf_get_name(buf)
+            local is_modified = vim.api.nvim_buf_get_option(buf, "modified")
+            local is_terminal = buf_name:match("^term://")
+
+            if buf_ft ~= "NvimTree" and not is_terminal and not is_modified then
+                vim.api.nvim_buf_delete(buf, { force = false })
+            end
+        end
+    end
+end, { desc = "close all buffers except current and modified" })
+
 -- Format
 map({ "n", "x" }, "<leader>fm", function()
     require("conform").format({ lsp_fallback = true })
