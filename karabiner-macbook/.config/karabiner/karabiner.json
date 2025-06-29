@@ -14,7 +14,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "osascript -e 'tell application \"Google Chrome\" to activate'" }],
+                                "to": [{ "shell_command": "open -a 'Google Chrome'" }],
                                 "type": "basic"
                             },
                             {
@@ -25,7 +25,18 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "osascript -e 'tell application \"Kitty\" to activate'" }],
+                                "to": [{ "shell_command": "open -a 'Kitty'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": {
+                                        "mandatory": ["right_shift"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "open -a 'Preview'" }],
                                 "type": "basic"
                             }
                         ]
