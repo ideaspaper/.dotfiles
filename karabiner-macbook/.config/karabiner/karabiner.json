@@ -4,6 +4,33 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Right Shift + Letter to launch or switch apps",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": {
+                                        "mandatory": ["right_shift"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"Google Chrome\" to activate'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": ["right_shift"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"Kitty\" to activate'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Map Left Option to Fn key",
                         "manipulators": [
                             {
