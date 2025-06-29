@@ -14,7 +14,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open -a 'Google Chrome'" }],
+                                "to": [{ "shell_command": "pgrep -x 'Google Chrome' >/dev/null && open -b com.google.Chrome" }],
                                 "type": "basic"
                             },
                             {
@@ -25,7 +25,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open -a 'Kitty'" }],
+                                "to": [{ "shell_command": "pgrep -x 'kitty' >/dev/null && open -b net.kovidgoyal.kitty" }],
                                 "type": "basic"
                             },
                             {
@@ -36,7 +36,7 @@
                                         "optional": ["any"]
                                     }
                                 },
-                                "to": [{ "shell_command": "open -a 'Preview'" }],
+                                "to": [{ "shell_command": "pgrep -x 'Preview' >/dev/null && open -b com.apple.Preview" }],
                                 "type": "basic"
                             }
                         ]
