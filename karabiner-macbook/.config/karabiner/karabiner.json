@@ -1,96 +1,177 @@
 {
-    "profiles": [
-        {
-            "complex_modifications": {
-                "rules": [
-                    {
-                        "description": "Right Shift + Letter to launch or switch apps",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "o",
-                                    "modifiers": {
-                                        "mandatory": ["right_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "pgrep -x 'Google Chrome' >/dev/null && open -b com.google.Chrome" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": {
-                                        "mandatory": ["right_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "pgrep -x 'kitty' >/dev/null && open -b net.kovidgoyal.kitty" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "p",
-                                    "modifiers": {
-                                        "mandatory": ["right_shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "shell_command": "pgrep -x 'Preview' >/dev/null && open -b com.apple.Preview" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Map Left Option to Fn key",
-                        "manipulators": [
-                            {
-                                "from": { "key_code": "left_option" },
-                                "to": [{ "key_code": "fn" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Map Left Control to Left Option",
-                        "manipulators": [
-                            {
-                                "from": { "key_code": "fn" },
-                                "to": [{ "key_code": "left_control" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": { "key_code": "left_control" },
-                                "to": [{ "key_code": "left_option" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Map Fn key to Left Control",
-                        "manipulators": [
-                            {
-                                "from": { "key_code": "fn" },
-                                "to": [{ "key_code": "left_control" }],
-                                "type": "basic"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "name": "Default profile",
-            "selected": true,
-            "simple_modifications": [
-                {
-                    "from": { "key_code": "caps_lock" },
-                    "to": [{ "key_code": "escape" }]
+  "profiles": [
+    {
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "Right Shift + Letter to launch or switch apps",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "o",
+                  "modifiers": {
+                    "mandatory": [
+                      "right_shift"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
                 },
-                {
-                    "from": { "key_code": "escape" },
-                    "to": [{ "key_code": "caps_lock" }]
-                }
-            ],
-            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+                "to": [
+                  {
+                    "shell_command": "pgrep -x 'Google Chrome' >/dev/null && open -b com.google.Chrome"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": [
+                      "right_shift"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "pgrep -x 'kitty' >/dev/null && open -b net.kovidgoyal.kitty"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "p",
+                  "modifiers": {
+                    "mandatory": [
+                      "right_shift"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "pgrep -x 'Preview' >/dev/null && open -b com.apple.Preview"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "q",
+                  "modifiers": {
+                    "mandatory": [
+                      "right_shift"
+                    ],
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "pgrep -x 'qutebrowser' >/dev/null && open -b org.qutebrowser.qutebrowser"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Map Left Option to Fn key",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "left_option"
+                },
+                "to": [
+                  {
+                    "key_code": "fn"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Map Left Control to Left Option",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "fn"
+                },
+                "to": [
+                  {
+                    "key_code": "left_control"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "left_control"
+                },
+                "to": [
+                  {
+                    "key_code": "left_option"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Map Fn key to Left Control",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "fn"
+                },
+                "to": [
+                  {
+                    "key_code": "left_control"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "name": "Default profile",
+      "selected": true,
+      "simple_modifications": [
+        {
+          "from": {
+            "key_code": "caps_lock"
+          },
+          "to": [
+            {
+              "key_code": "escape"
+            }
+          ]
+        },
+        {
+          "from": {
+            "key_code": "escape"
+          },
+          "to": [
+            {
+              "key_code": "caps_lock"
+            }
+          ]
         }
-    ]
+      ],
+      "virtual_hid_keyboard": {
+        "keyboard_type_v2": "ansi"
+      }
+    }
+  ]
 }
