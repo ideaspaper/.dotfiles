@@ -2,7 +2,6 @@ import catppuccin
 
 config.load_autoconfig(False)
 
-catppuccin.setup(c, "mocha", True)
 c.url.start_pages = "about:blank"
 c.url.default_page = "about:blank"
 c.url.searchengines = {
@@ -14,9 +13,13 @@ c.url.searchengines = {
 c.tabs.padding = {'top': 5, 'bottom': 5, 'left': 9, 'right': 9}
 c.tabs.indicator.width = 0
 c.tabs.width = '7%'
+
 c.fonts.default_size = '12pt'
+
 c.content.blocking.enabled = True
 
 config.bind("<Shift-J>", "tab-prev")
 config.bind("<Shift-K>", "tab-next")
 config.bind('cc', 'jseval -q document.activeElement.blur()')
+
+catppuccin.setup(c, "mocha", True)
