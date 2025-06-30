@@ -9,6 +9,7 @@ map({ "n", "i", "v", "c", "t" }, "<Right>", "<Nop>", { desc = "disable right arr
 -- General
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>", { desc = "general save file" })
+map("i", "jk", "<Esc>", { noremap = true, desc = "exit insert mode using jk" })
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 
