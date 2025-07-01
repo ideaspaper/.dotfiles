@@ -8,6 +8,9 @@ c.url.searchengines = {
     "DEFAULT": "https://www.google.com/search?q={}",
     'gh': 'https://github.com/search?o=desc&q={}&s=stars',
     'yt': 'https://www.youtube.com/results?search_query={}',
+    'mdn': 'https://developer.mozilla.org/en-US/search?q={}',
+    'ciu': 'https://caniuse.com/?search={}',
+    'tldr': 'https://tldr.inbrowser.app/pages/common/{}',
 }
 
 c.tabs.padding = {'top': 5, 'bottom': 5, 'left': 9, 'right': 9}
