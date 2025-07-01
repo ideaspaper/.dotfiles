@@ -20,6 +20,8 @@ c.content.blocking.enabled = True
 
 config.bind("<Shift-J>", "tab-prev")
 config.bind("<Shift-K>", "tab-next")
+config.bind('gJ', 'tab-move -')
+config.bind('gK', 'tab-move +')
 config.bind('cc', 'jseval -q document.activeElement.blur()')
 
 catppuccin.setup(c, "mocha", True)
