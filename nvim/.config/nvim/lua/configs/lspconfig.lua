@@ -1,12 +1,12 @@
 local M = {}
 local map = vim.keymap.set
 
-M.on_attach = function(_, bufnr)
+M.on_attach = function(client, bufnr)
     local function opts(desc)
         return { buffer = bufnr, desc = "lsp " .. desc }
     end
 
-    map("n", "gd", vim.lsp.buf.declaration, opts("go to declaration"))
+    map("n", "gD", vim.lsp.buf.declaration, opts("go to declaration"))
     map("n", "gd", vim.lsp.buf.definition, opts("go to definition"))
     map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts("add workspace folder"))
     map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts("remove workspace folder"))
@@ -16,7 +16,28 @@ M.on_attach = function(_, bufnr)
     end, opts("list workspace folders"))
 
     map("n", "<leader>D", vim.lsp.buf.type_definition, opts("go to type definition"))
-    map("n", "<leader>ra", require("nvchad.lsp.renamer"), opts("nvrenamer"))
+    map("n", "<leader>rn", vim.lsp.buf.rename, opts("rename"))
+
+    if client.server_capabilities.documentHighlightProvider then
+        local group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = false })
+        vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+
+        vim.api.nvim_create_autocmd("CursorHold", {
+            group = group,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.document_highlight()
+            end,
+        })
+
+        vim.api.nvim_create_autocmd({ "CursorMoved", "InsertEnter", "BufLeave" }, {
+            group = group,
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.clear_references()
+            end,
+        })
+    end
 end
 
 M.on_init = function(client, _)
@@ -26,7 +47,6 @@ M.on_init = function(client, _)
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
-
 M.capabilities.textDocument.completion.completionItem = {
     documentationFormat = { "markdown", "plaintext" },
     snippetSupport = true,
@@ -51,13 +71,15 @@ M.defaults = function()
 
     vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
-            M.on_attach(_, args.buf)
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            local bufnr = args.buf
+            M.on_attach(client, bufnr)
         end,
     })
 
     local lspconfig = require("lspconfig")
 
-    lspconfig.servers = {
+    local default_servers = {
         "lua_ls",
         "gopls",
         "ts_ls",
@@ -65,8 +87,6 @@ M.defaults = function()
         "jsonls",
         "yamlls",
     }
-
-    local default_servers = {}
 
     for _, lsp in ipairs(default_servers) do
         lspconfig[lsp].setup({
@@ -80,7 +100,6 @@ M.defaults = function()
         on_attach = M.on_attach,
         on_init = M.on_init,
         capabilities = M.capabilities,
-
         settings = {
             Lua = {
                 diagnostics = {
