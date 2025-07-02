@@ -50,7 +50,7 @@
                                 "to": [{ "shell_command": "pgrep -x 'qutebrowser' >/dev/null && open -b org.qutebrowser.qutebrowser" }],
                                 "type": "basic"
                             },
-                            {
+                                            {
                                 "from": {
                                     "key_code": "r",
                                     "modifiers": {
@@ -61,6 +61,7 @@
                                 "to": [{ "shell_command": "pgrep -x 'RapidAPI' >/dev/null && open -b com.luckymarmot.Paw" }],
                                 "type": "basic"
                             }
+
                         ]
                     },
                     {
@@ -105,11 +106,15 @@
             "simple_modifications": [
                 {
                     "from": { "key_code": "caps_lock" },
-                    "to": [{ "key_code": "escape" }]
+                    "to": [{ "key_code": "tab" }]
                 },
                 {
                     "from": { "key_code": "escape" },
                     "to": [{ "key_code": "caps_lock" }]
+                },
+                {
+                    "from": { "key_code": "tab" },
+                    "to": [{ "key_code": "escape" }]
                 }
             ],
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
