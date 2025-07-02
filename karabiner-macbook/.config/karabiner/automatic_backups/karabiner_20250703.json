@@ -41,7 +41,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "b",
+                                    "key_code": "q",
                                     "modifiers": {
                                         "mandatory": ["right_shift"],
                                         "optional": ["any"]
