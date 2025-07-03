@@ -104,14 +104,5 @@ end, {
 })
 map("n", "<leader>oc", ":OpenChrome<CR>", { desc = "\u{f268} open in Chrome" })
 
--- Toggle buffer render markdown
-vim.api.nvim_create_user_command("ToggleBufferRenderMarkdown", function()
-    require("render-markdown").buf_toggle()
-end, {
-    desc = "toggle buffer render markdown preview",
-    nargs = 0,
-})
-map("n", "<leader>md", ":ToggleBufferRenderMarkdown<CR>", { desc = "toggle buffer render markdown" })
-
 -- Toggle line wrapping
 map("n", "<leader>wr", ":set wrap!<CR>", { desc = "toggle word wrap" })

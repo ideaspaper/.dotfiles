@@ -217,15 +217,6 @@ return {
         end,
     },
 
-    -- NOTE: Lightweight Markdown preview rendered in Neovim buffer
-    {
-        "MeanderingProgrammer/render-markdown.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("configs.render-markdown").setup()
-        end,
-    },
-
     -- NOTE: Add/change/delete surrounding characters like parentheses, quotes, etc.
     {
         "kylechui/nvim-surround",
