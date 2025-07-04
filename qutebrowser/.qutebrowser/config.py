@@ -1,6 +1,6 @@
 import catppuccin
 
-config.load_autoconfig(False)
+config.load_autoconfig(True)
 
 c.url.start_pages = "about:blank"
 c.url.default_page = "about:blank"
