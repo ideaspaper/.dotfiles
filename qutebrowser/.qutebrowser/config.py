@@ -11,6 +11,7 @@ c.url.searchengines = {
     'mdn': 'https://developer.mozilla.org/en-US/search?q={}',
     'ciu': 'https://caniuse.com/?search={}',
     'tldr': 'https://tldr.inbrowser.app/pages/common/{}',
+    'oed': 'https://www.oed.com/search/dictionary/?scope=Entries&q={}'
 }
 
 c.tabs.padding = {'top': 5, 'bottom': 5, 'left': 9, 'right': 9}
