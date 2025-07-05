@@ -19,7 +19,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "l",
+                                    "key_code": "t",
                                     "modifiers": {
                                         "mandatory": ["right_shift"],
                                         "optional": ["any"]
@@ -37,6 +37,28 @@
                                     }
                                 },
                                 "to": [{ "shell_command": "pgrep -x 'Preview' >/dev/null && open -b com.apple.Preview" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": {
+                                        "mandatory": ["right_shift"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "pgrep -x 'qutebrowser' >/dev/null && open -b org.qutebrowser.qutebrowser" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": {
+                                        "mandatory": ["right_shift"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "pgrep -x 'RapidAPI' >/dev/null && open -b com.luckymarmot.Paw" }],
                                 "type": "basic"
                             }
                         ]
