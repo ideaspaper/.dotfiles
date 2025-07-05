@@ -2,6 +2,23 @@ import catppuccin
 
 config.load_autoconfig(True)
 
+c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
+c.colors.webpage.darkmode.policy.images = 'never'
+config.set('colors.webpage.darkmode.enabled', False, 'file://*')
+c.tabs.padding = {'top': 5, 'bottom': 5, 'left': 9, 'right': 9}
+c.tabs.indicator.width = 0
+c.tabs.width = '7%'
+c.fonts.default_size = '12pt'
+
+c.content.blocking.enabled = True
+
+config.bind("<Shift-J>", "tab-prev")
+config.bind("<Shift-K>", "tab-next")
+config.bind('gJ', 'tab-move -')
+config.bind('gK', 'tab-move +')
+config.bind('cc', 'jseval -q document.activeElement.blur()')
+
 c.url.start_pages = "about:blank"
 c.url.default_page = "about:blank"
 c.url.searchengines = {
@@ -13,19 +30,5 @@ c.url.searchengines = {
     'tldr': 'https://tldr.inbrowser.app/pages/common/{}',
     'oed': 'https://www.oed.com/search/dictionary/?scope=Entries&q={}'
 }
-
-c.tabs.padding = {'top': 5, 'bottom': 5, 'left': 9, 'right': 9}
-c.tabs.indicator.width = 0
-c.tabs.width = '7%'
-
-c.fonts.default_size = '12pt'
-
-c.content.blocking.enabled = True
-
-config.bind("<Shift-J>", "tab-prev")
-config.bind("<Shift-K>", "tab-next")
-config.bind('gJ', 'tab-move -')
-config.bind('gK', 'tab-move +')
-config.bind('cc', 'jseval -q document.activeElement.blur()')
 
 catppuccin.setup(c, "mocha", True)
