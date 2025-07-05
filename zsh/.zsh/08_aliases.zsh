@@ -25,7 +25,6 @@ alias reload='source ~/.zshrc'
 alias pn='pnpm'
 alias v='nvim'
 alias vim='nvim'
-alias lgit='lazygit'
 
 alias ds-clean='find . -name .DS_Store -type f -delete 2>/dev/null; printf ".DS_Store files removed from current directory\n"'
 alias ds-clean-home='find ~ -name .DS_Store -type f -delete 2>/dev/null; printf ".DS_Store files removed from home\n"'
