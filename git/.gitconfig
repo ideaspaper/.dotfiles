@@ -1,5 +1,9 @@
 [user]
 	name = anpan
 	email = agni.infinity@gmail.com
+
 [commit]
-	template = /Users/anpan/.gitmessage
+	template = ~/.gitmessage
+
+[include]
+    path = ~/.config/delta/delta.gitconfig

@@ -105,4 +105,4 @@ end, {
 map("n", "<leader>oc", ":OpenChrome<CR>", { desc = "\u{f268} open in Chrome" })
 
 -- Toggle line wrapping
-map("n", "<leader>wr", ":set wrap!<CR>", { desc = "toggle word wrap" })
+map("n", "<leader>ww", ":set wrap!<CR>", { desc = "toggle word wrap" })
